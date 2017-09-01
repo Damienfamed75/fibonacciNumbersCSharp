@@ -8,16 +8,42 @@ namespace fibonacciNums
 {
     public static class Program
     {
-        public static void Main(string[] args)
+        public static string numString;
+        public static int numFib, x;
+
+        public static int fiboCalc(int num)
         {
-            string numString;
-            int numFib;
-            DetermineNumber();
-            Console.Write($"What's the {numString} number of the fibonacci sequence?\n\n> ");
-            string result = Console.ReadLine();
-            if(Int32.TryParse(result, out x))
+            int a = 1, b = 0, temp;
+            while (num >= -1)
             {
-                if(x == )
+                temp = a;
+                a = a + b;
+                b = temp;
+                num--;
+            }
+            return b;
+        }
+
+        public static void Main()
+        {
+            while(true)
+            {
+                Console.Clear();
+                DetermineNumber();
+                Console.Write($"What's the {numString} number of the fibonacci sequence?\n\n> ");
+                string result = Console.ReadLine();
+                if (Int32.TryParse(result, out x))
+                {
+                    if (x == fiboCalc(numFib))
+                    {
+                        Console.Write($"You're right!! You answered: {result} : : Answer is: {fiboCalc(numFib).ToString()}\n\n<Press Any Key to Restart>");
+                    }
+                    else
+                    {
+                        Console.Write($"You're wrong!! You answered: {result} : : Answer is: {fiboCalc(numFib).ToString()}\n\n<Press Any Key to Restart>");
+                    }
+                }
+                Console.ReadKey();
             }
         }
         static void DetermineNumber ()
@@ -51,7 +77,7 @@ namespace fibonacciNums
                     break;
                 default:
                     numString = "eleventh";
-                    numFibv = 10;
+                    numFib = 10;
                     break;
             }
         }
